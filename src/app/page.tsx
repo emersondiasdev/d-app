@@ -1,7 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Textarea } from "@/components/ui/textarea";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { StatusCard } from "@/components/commons/statusCard";
 import { PlusIcon, Wallet2Icon } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { StakeCard } from "@/components/commons/stakeCard";
+import { TaskCard } from "@/components/commons/taskCard";
 
 export default function Home() {
   return (
@@ -22,19 +27,48 @@ export default function Home() {
             <StatusCard />
           </div>
           <div className="flex justify-between items-center mt-10">
-           <div className="text-2xl font-bold">Tarefas</div>
-          </div>
-          <div>
-            <Dialog>
-              <Button>
-                <PlusIcon />
-                <span>Nova tarefa</span>
-              </Button>
-
-            </Dialog>
+           <h1 className="text-2xl font-bold">Tarefas</h1>
+            <div>
+              <Dialog>
+                <DialogTrigger>
+                  <Button>
+                    <PlusIcon />
+                    <span>Nova tarefa</span>
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Nova tarefa</DialogTitle>
+                  </DialogHeader>
+                  <DialogDescription className="flex flex-col gap-4">
+                    <Label>Título</Label>
+                    <Input type="text" placeholder="Nova tarefa" />
+                    <Label>Descrição</Label>
+                    <Textarea placeholder="Descrição Tarefa"/>
+                    <Input type="datetime-local" placeholder="Data de vencimento"></Input>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                      <StakeCard />
+                      <StakeCard />
+                      <StakeCard />
+                      <StakeCard />
+                    </div>
+                    <Button>
+                      <PlusIcon />
+                      <span>Criar tarefa</span>
+                    </Button>
+                  </DialogDescription>
+                </DialogContent>
+              </Dialog>
+            </div>
+            
+            <div className="flex flex-col gap-4">
+              <TaskCard />
+              <TaskCard />
+              <TaskCard />
+              <TaskCard />
+            </div>
           </div>
         </div>
-        <div className="flex flex-col"></div>
     </div>
   );
 }
